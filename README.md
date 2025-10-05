@@ -1,5 +1,3 @@
-# studymate-webapp
-
 # StudyMate – Student Task & Exam Planner
 
 ## Project Description
