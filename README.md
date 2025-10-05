@@ -18,29 +18,30 @@ StudyMate is a web application that helps students organize their studies by tra
 
 ## Project Structure
 
-studymate/
-├── backend/
-│ ├── routes/
-│ ├── services/
-│ ├── dao/
-│ ├── index.php
-│ └── .htaccess
-├── frontend/
-│ ├── css/
-│ │ └── style.css
-│ ├── js/
-│ │ └── app.js
-│ ├── views/
-│ │ ├── index.html
-│ │ ├── login.html
-│ │ ├── register.html
-│ │ ├── dashboard.html
-│ │ ├── courses.html
-│ │ ├── tasks.html
-│ │ └── profile.html
-│ └── assets/
-│ └── placeholder.txt
-└── README.md
+- studymate/
+  - backend/
+    - routes/
+    - services/
+    - dao/
+    - index.php
+    - .htaccess
+  - frontend/
+    - css/
+      - style.css
+    - js/
+      - app.js
+    - views/
+      - index.html
+      - login.html
+      - register.html
+      - dashboard.html
+      - courses.html
+      - tasks.html
+      - profile.html
+    - assets/
+      - placeholder.txt
+  - README.md
+
 
 
 ## Note
