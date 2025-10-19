@@ -48,3 +48,6 @@ StudyMate is a web application that helps students organize their studies by tra
 - Backend is not yet connected to the frontend.  
 - CRUD operations and JWT authentication will be implemented in later milestones.  
 - Placeholder files (`.gitkeep`) are used in empty folders to keep Git tracking.
+
+## Milestone 1
+Initial setup and static frontend ready.
