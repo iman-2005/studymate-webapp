@@ -51,3 +51,5 @@ StudyMate is a web application that helps students organize their studies by tra
 
 ## Milestone 1
 Initial setup and static frontend ready.
+
+
