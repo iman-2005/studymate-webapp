@@ -1,7 +1,9 @@
 <?php
 require_once "Database.php";
+require_once 'BaseDAO.php';
 
-class ModulesDAO {
+
+class ModulesDAO extends BaseDAO{
   private $pdo;
 
   public function __construct() {

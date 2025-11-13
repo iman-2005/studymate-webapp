@@ -1,5 +1,7 @@
 <?php
-class Database {
+require_once 'BaseDAO.php';
+
+class Database extends BaseDAO{
   private static $instance = null;
   private $pdo;
 

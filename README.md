@@ -1,55 +1,74 @@
-# StudyMate – Student Task & Exam Planner
+# StudyMate – Backend API (Milestone 3)
+This backend is implemented using **pure PHP**, **FlightPHP**, **PDO**, and **MySQL**.  
+It forms the REST API for the StudyMate web application and includes:
 
-## Project Description
-StudyMate is a web application that helps students organize their studies by tracking tasks, exams, and grades. The application is a single-page application (SPA), responsive, and uses Bootstrap for the frontend.
+- Full CRUD for all entities  
+- Service & DAO layers  
+- Routing using FlightPHP  
+- OpenAPI 3.0 documentation  
+- Swagger UI interface  
+- `.htaccess` URL rewriting support  
+- JSON-based request/response model  
 
-## Features
-- User registration and login (planned)
-- Task and exam management (planned)
-- Dashboard and profile pages
-- Responsive design with Bootstrap
+This README covers project structure, installation, running the API, and using the documentation.
 
-## Technologies
-- Backend: PHP (FlightPHP for REST API)
-- Database: MySQL (using PDO)
-- Frontend: HTML, CSS, JavaScript, Bootstrap
-- Authentication: JWT (planned)
-- Version Control: Git & GitHub
+---
 
-## Project Structure
+## 📌 Technologies Used
+- **PHP 8+**
+- **FlightPHP (micro-framework)**
+- **MySQL + PDO**
+- **Composer**
+- **Swagger UI**
+- **OpenAPI 3.0.3**
 
-- studymate/
-  - backend/
-    - routes/
-    - services/
-    - dao/
-    - index.php
-    - .htaccess
-  - frontend/
-    - css/
-      - style.css
-    - js/
-      - app.js
-    - views/
-      - index.html
-      - login.html
-      - register.html
-      - dashboard.html
-      - courses.html
-      - tasks.html
-      - profile.html
-    - assets/
-      - placeholder.txt
-  - README.md
+---
 
-
-
-## Note
-- Backend is not yet connected to the frontend.  
-- CRUD operations and JWT authentication will be implemented in later milestones.  
-- Placeholder files (`.gitkeep`) are used in empty folders to keep Git tracking.
-
-## Milestone 1
-Initial setup and static frontend ready.
+# 📁 Project Structure
+Backend/
+└── api/
+├── index.php
+├── composer.json
+├── .htaccess
+├── routes/
+│ ├── UsersRoutes.php
+│ ├── CoursesRoutes.php
+│ ├── ModulesRoutes.php
+│ ├── NotesRoutes.php
+│ └── RolesRoutes.php
+├── services/
+│ ├── BaseService.php
+│ ├── UsersService.php
+│ ├── CoursesService.php
+│ ├── ModulesService.php
+│ ├── NotesService.php
+│ └── RolesService.php
+├── dao/
+│ ├── Database.php
+│ ├── baseDAO.php
+│ ├── UsersDAO.php
+│ ├── CoursesDAO.php
+│ ├── ModulesDAO.php
+│ ├── NotesDAO.php
+│ └── RolesDAO.php
+├── public/
+│ ├── swagger.php
+│ └── api_documentation.json
+└── vendor/
 
 
+Final Notes:
+
+The backend is now fully operational using:
+
+Clean architecture
+
+Reusable services
+
+Valid OpenAPI documentation
+
+Swagger UI debugging
+
+REST conventions
+
+Proper routing with FlightPHP
