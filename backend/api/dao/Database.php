@@ -1,32 +1,39 @@
 <?php
-require_once 'BaseDAO.php';
 
-class Database extends BaseDAO{
-  private static $instance = null;
-  private $pdo;
+class Database {
+// Singleton instance
+private static $instance = null;
 
-  private function __construct() {
-    $host = 'localhost';
-    $db   = 'studymate';
-    $user = 'root'; // default for XAMPP
-    $pass = '';     // leave empty unless you set a password
-    $charset = 'utf8mb4';
 
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $options = [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-      PDO::ATTR_EMULATE_PREPARES => false,
-    ];
+protected $pdo;
 
-    $this->pdo = new PDO($dsn, $user, $pass, $options);
-  }
 
-  public static function getInstance() {
-    if (self::$instance === null) {
-      self::$instance = new Database();
-    }
-    return self::$instance->pdo;
-  }
+private $host = "localhost";
+private $user = "root";
+private $pass = "";
+private $db = "studymate";
+
+
+private function __construct() {
+try {
+$dsn = "mysql:host={$this->host};dbname={$this->db};charset=utf8mb4";
+$this->pdo = new PDO($dsn, $this->user, $this->pass);
+$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+die("DB ERROR: " . $e->getMessage());
 }
-?>
+}
+
+// Singleton accessor
+public static function getInstance() {
+if (self::$instance === null) {
+self::$instance = new Database();
+}
+return self::$instance;
+}
+
+
+public function getConnection() {
+return $this->pdo;
+}
+}

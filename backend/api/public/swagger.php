@@ -6,22 +6,25 @@ header("Content-Type: text/html");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>StudyMate API Documentation</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css">
+<meta charset="UTF-8">
+<title>StudyMate API Documentation</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css">
 </head>
 
 <body>
+
 <div id="swagger-ui"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js"></script>
 
 <script>
 window.onload = () => {
-    SwaggerUIBundle({
-        url: "api_documentation.json",
-        dom_id: "#swagger-ui"
-    });
+SwaggerUIBundle({
+url: "/study/api/api_documentation.json", // MUST BE ABSOLUTE
+dom_id: "#swagger-ui"
+});
 };
 </script>
 
