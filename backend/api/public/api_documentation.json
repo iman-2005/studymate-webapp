@@ -1,0 +1,339 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "StudyMate REST API",
+    "version": "1.0.0",
+    "description": "OpenAPI documentation for the StudyMate backend using FlightPHP."
+  },
+
+  "tags": [
+    { "name": "Users", "description": "User CRUD operations" },
+    { "name": "Courses", "description": "Course CRUD operations" },
+    { "name": "Modules", "description": "Module CRUD operations" },
+    { "name": "Notes", "description": "Notes CRUD operations" },
+    { "name": "Roles", "description": "Roles CRUD operations" }
+  ],
+
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "List of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/User" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserCreate" }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "User created" }
+        }
+      }
+    },
+
+    "/users/{id}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get a single user",
+        "parameters": [
+          { "$ref": "#/components/parameters/UserId" }
+        ],
+        "responses": {
+          "200": {
+            "description": "User object",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/User" } }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update a user",
+        "parameters": [
+          { "$ref": "#/components/parameters/UserId" }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "User updated" }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete a user",
+        "parameters": [
+          { "$ref": "#/components/parameters/UserId" }
+        ],
+        "responses": {
+          "200": { "description": "User deleted" }
+        }
+      }
+    },
+
+    "/courses": {
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get all courses",
+        "responses": {
+          "200": {
+            "description": "List of courses",
+            "content": {
+              "application/json": {
+                "schema": { 
+                  "type": "array", 
+                  "items": { "$ref": "#/components/schemas/Course" } 
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Courses"],
+        "summary": "Create a new course",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/CourseCreate" } }
+          }
+        },
+        "responses": {
+          "201": { "description": "Course created" }
+        }
+      }
+    },
+
+    "/modules": {
+      "get": {
+        "tags": ["Modules"],
+        "summary": "Get all modules",
+        "responses": {
+          "200": {
+            "description": "List of modules",
+            "content": {
+              "application/json": {
+                "schema": { 
+                  "type": "array", 
+                  "items": { "$ref": "#/components/schemas/Module" } 
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Modules"],
+        "summary": "Create a new module",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ModuleCreate" } }
+          }
+        },
+        "responses": {
+          "201": { "description": "Module created" }
+        }
+      }
+    },
+
+    "/notes": {
+      "get": {
+        "tags": ["Notes"],
+        "summary": "Get all notes",
+        "responses": {
+          "200": {
+            "description": "List of notes",
+            "content": {
+              "application/json": {
+                "schema": { 
+                  "type": "array", 
+                  "items": { "$ref": "#/components/schemas/Note" } 
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Notes"],
+        "summary": "Create a new note",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/NoteCreate" } }
+          }
+        },
+        "responses": {
+          "201": { "description": "Note created" }
+        }
+      }
+    },
+
+    "/roles": {
+      "get": {
+        "tags": ["Roles"],
+        "summary": "Get all roles",
+        "responses": {
+          "200": {
+            "description": "List of roles",
+            "content": {
+              "application/json": {
+                "schema": { 
+                  "type": "array", 
+                  "items": { "$ref": "#/components/schemas/Role" } 
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Roles"],
+        "summary": "Create new role",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RoleCreate" } }
+          }
+        },
+        "responses": {
+          "201": { "description": "Role created" }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "parameters": {
+      "UserId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "integer" }
+      }
+    },
+
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "role_id": { "type": "integer" }
+        }
+      },
+      "UserCreate": {
+        "type": "object",
+        "required": ["name", "email", "password", "role_id"],
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "role_id": { "type": "integer" }
+        }
+      },
+      "UserUpdate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "role_id": { "type": "integer" }
+        }
+      },
+
+      "Course": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" }
+        }
+      },
+      "CourseCreate": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" }
+        }
+      },
+
+      "Module": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "course_id": { "type": "integer" },
+          "name": { "type": "string" }
+        }
+      },
+      "ModuleCreate": {
+        "type": "object",
+        "required": ["name", "course_id"],
+        "properties": {
+          "name": { "type": "string" },
+          "course_id": { "type": "integer" }
+        }
+      },
+
+      "Note": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "module_id": { "type": "integer" },
+          "content": { "type": "string" }
+        }
+      },
+      "NoteCreate": {
+        "type": "object",
+        "required": ["module_id", "content"],
+        "properties": {
+          "module_id": { "type": "integer" },
+          "content": { "type": "string" }
+        }
+      },
+
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" }
+        }
+      },
+      "RoleCreate": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+
+
